@@ -12,19 +12,21 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 
+
 public class BrowserFactory {
     public static WebDriver buildDriver(String browserName) throws MalformedURLException {
         switch (browserName) {
 
-            case "chrome_invisible":
-                ChromeOptions chromeInvisibleOpt = new ChromeOptions();
-                chromeInvisibleOpt.addArguments("--disable-notifications");
-                chromeInvisibleOpt.addArguments("--headless");
-                return new ChromeDriver(chromeInvisibleOpt);
+            case "chrome":
+                ChromeOptions chromeOpt = new ChromeOptions();
+                chromeOpt.addArguments("--disable-notifications");
+
+                return new ChromeDriver(chromeOpt);
 
             case "firefox":
                 FirefoxOptions ffOpt = new FirefoxOptions();
                 ffOpt.addPreference("dom.webnotifications.enabled", false);
+
                 return new FirefoxDriver(ffOpt);
 
             default:
